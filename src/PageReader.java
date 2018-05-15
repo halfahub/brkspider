@@ -1,7 +1,11 @@
+
 public class PageReader {
+
+    HttpClient httpClient = new HttpClient();
 
     public String getPageFor(String url) {
         HttpMethod method = new GetMethod(url);
+
 
         try{
             httpClient.executeMethod(method);
@@ -12,6 +16,11 @@ public class PageReader {
         } finally {
             method.releaseConnection();
         }
+        return "";
+    }
+
+    private void handle(Exception e) {
+        e.printStackTrace();
     }
 
 }

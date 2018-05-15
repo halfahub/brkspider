@@ -7,4 +7,15 @@ public class PageIterator {
         this.reader = reader;
     }
 
+    public synchronized String getNextPageOrNull() {
+        if (urls.hasNext())
+            return getPageFor(urls.next());
+        else
+            return null;
+    }
+
+    public String getPageFor(String url) {
+        return reader.getPageFor(url);
+    }
+
 }
